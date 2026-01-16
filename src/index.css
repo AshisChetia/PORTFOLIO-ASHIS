@@ -1,0 +1,53 @@
+:root {
+  /* Premium Dark Theme Palette */
+  --bg-color: #0b0b0b;       /* Deep matte black, not #000 */
+  --text-main: #e0e0e0;      /* Off-white for better readability */
+  --text-muted: #888888;     /* Gray for secondary text */
+  --accent: #d4af37;         /* Gold/Bronze for luxury feel (change as liked) */
+  
+  /* Spacing & Layout */
+  --container-width: 90%;
+  --max-width: 1400px;
+  
+  /* Typography */
+  --font-main: 'Inter', sans-serif; /* Clean sans-serif */
+  --font-display: 'Playfair Display', serif; /* Elegant serif for headings */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at 50% -20%, #1a1a1a, #0b0b0b);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  -webkit-font-smoothing: antialiased; /* Crisp text on Mac */
+}
+
+/* Hide scrollbar for clean look (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05; /* Subtle texture */
+  background: url("https://grainy-gradients.vercel.app/noise.svg");
+}

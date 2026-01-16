@@ -1,0 +1,87 @@
+.mac-dock-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: auto;
+}
+
+.mac-dock {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1); /* Glass effect */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dock-item {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.dock-item:hover {
+  box-shadow: 0 0 15px var(--accent);
+  color: var(--accent);
+}
+
+/* Tooltip (Name appears on hover) */
+.dock-tooltip {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.dock-item:hover .dock-tooltip {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .mac-dock-container {
+    bottom: 1.5rem; /* Move slightly down */
+    width: 90%; /* Prevent it from being wider than screen */
+    max-width: 400px; /* Cap the width */
+  }
+
+  .mac-dock {
+    gap: 0.8rem; /* Reduce gap between icons (was 1.5rem) */
+    padding: 0.8rem 1rem; /* Reduce padding around dock */
+    width: 100%;
+    justify-content: space-between; /* Distribute icons evenly */
+  }
+
+  .dock-item {
+    width: 40px; /* Smaller icon box (was 50px) */
+    height: 40px;
+    font-size: 1.2rem; /* Smaller icon size */
+  }
+  
+  .dock-tooltip {
+    display: none; /* Hide tooltips on mobile (they get in the way) */
+  }
+}

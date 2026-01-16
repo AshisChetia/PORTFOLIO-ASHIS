@@ -1,0 +1,174 @@
+/* Container to ensure it takes space */
+.tech-section {
+  width: 100%;
+  min-height: 100vh; /* Force full height */
+  background-color: #050505; /* Deep black per design */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10; /* Ensure it sits above background particles */
+  padding: 4rem 0;
+}
+
+.tech-container {
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* --- Typography (Left/Bottom Title) --- */
+.tech-title-wrapper {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.tech-header {
+  font-family: 'Inter', sans-serif; /* Or your display font */
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 0.9;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px #555; /* Hollow text effect */
+}
+
+.tech-line {
+  width: 100px;
+  height: 4px;
+  background-color: #fff;
+  margin-top: 1.5rem;
+}
+
+/* --- The Grid (4 Columns) --- */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Force 4 columns on desktop */
+  gap: 2rem;
+  width: 100%;
+}
+
+/* --- Card Styles --- */
+.tech-card {
+  background: #0a0a0a; /* Slightly lighter than bg */
+  border: 1px solid #222;
+  padding: 2.5rem 1.5rem;
+  transition: all 0.4s ease;
+  min-height: 400px; /* Ensure vertical height */
+}
+
+.tech-card:hover {
+  background: #111;
+  border-color: #fff; /* White border on hover */
+  transform: translateY(-10px);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.tech-card:hover .card-icon {
+  color: #fff;
+}
+
+.card-num {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.5px;
+}
+
+.card-sub {
+  font-size: 0.75rem;
+  color: #555;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.card-divider {
+  width: 100%;
+  height: 1px;
+  background-color: #222;
+  margin-bottom: 1.5rem;
+}
+
+/* --- List Items --- */
+.tech-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tech-list li {
+  font-family: monospace; /* Code-like font */
+  font-size: 0.95rem;
+  color: #888;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+}
+
+.bullet {
+  color: #333;
+  font-size: 0.8rem;
+}
+
+.tech-list li:hover {
+  color: #fff;
+}
+.tech-list li:hover .bullet {
+  color: #fff;
+}
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 1200px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid on laptop/tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-grid {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+  
+  .tech-header {
+    font-size: 3.5rem;
+  }
+  
+  .layout-wrapper {
+    gap: 2rem;
+  }
+  
+  .tech-card {
+    min-height: auto;
+  }
+}

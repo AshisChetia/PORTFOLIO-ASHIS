@@ -1,0 +1,205 @@
+.contact-section {
+  padding: 8rem 0;
+  background-color: #050505;
+  position: relative;
+  min-height: 80vh;
+}
+
+.contact-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-header {
+  margin-bottom: 5rem;
+  max-width: 600px;
+}
+
+.contact-sub {
+  font-size: 1.1rem;
+  color: #888;
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* --- Layout --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr; /* Info takes less space */
+  gap: 6rem;
+}
+
+/* --- Left: Info --- */
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  color: var(--accent);
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  box-sizing: content-box; /* Ensures padding adds to size */
+  border-radius: 50%;
+}
+
+.info-item h4 {
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.info-item p {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+/* --- Right: Form --- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+/* The "No Border" Input Style */
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333; /* Only bottom line */
+  padding: 15px 0;
+  font-size: 1.2rem;
+  color: #fff;
+  font-family: var(--font-main);
+  transition: all 0.3s ease;
+  outline: none;
+  border-radius: 0; /* Remove default IOS radius */
+}
+
+.form-input::placeholder {
+  color: #444;
+}
+
+.form-input:focus {
+  border-bottom-color: var(--accent); /* Light up on focus */
+}
+
+/* Error State */
+.input-error {
+  border-bottom-color: #ff4d4d;
+}
+
+.error-text {
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  font-size: 0.85rem;
+  color: #ff4d4d;
+}
+
+/* Submit Button */
+.submit-btn {
+  align-self: flex-start;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Status Messages */
+.status-msg {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.status-msg.success { color: #22c55e; }
+.status-msg.error { color: #ff4d4d; }
+
+/* ... Keep existing styles ... */
+
+/* 1. REMOVE WHITE AUTOFILL BACKGROUND */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff; /* Make text white */
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset; /* Force background black */
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #fff;
+}
+
+/* 2. TOAST NOTIFICATION STYLE */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #111;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 10000;
+  transform: translateX(100%); /* Start hidden off-screen */
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.toast-notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast-notification.success { border-left: 4px solid #22c55e; }
+.toast-notification.error { border-left: 4px solid #ff4d4d; }
+
+.toast-icon { font-size: 1.2rem; }
+.toast-success-icon { color: #22c55e; }
+.toast-error-icon { color: #ff4d4d; }
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
