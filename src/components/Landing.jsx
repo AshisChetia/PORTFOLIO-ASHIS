@@ -114,7 +114,7 @@ const Landing = () => {
             <div className="reveal-overlay" ref={overlayRef}></div>
             <img 
               ref={imageRef}
-              src="/public/heroImg.jpg" 
+              src="/heroImg.jpg" 
               alt="Ashish Chetia" 
               className="hero-image"
             />
