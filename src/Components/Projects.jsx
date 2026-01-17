@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { FaGithub, FaExternalLinkAlt, FaPlay } from 'react-icons/fa';
-import { projectData } from '../Data/projectData';
+import { projectData } from '../data/projectData';
 import './Projects.css';
 
 // --- Sub-Component for Video Logic ---
