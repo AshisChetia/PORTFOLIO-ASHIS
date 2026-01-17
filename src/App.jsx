@@ -1,10 +1,10 @@
 import React from 'react';
-import Landing from './components/Landing';
+import Landing from './Components/Landing';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import About from './components/About';
-import Contact from './components/Contact'; // Import
-import Dock from './components/Dock';
+import About from './Components/About';
+import Contact from './Components/Contact'; // Import
+import Dock from './Components/Dock';
 
 function App() {
   return (
