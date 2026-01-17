@@ -145,9 +145,9 @@
 }
 
 .social-btn:hover {
-  background: #fff;
+  background: var(--accent);
   color: #000;
-  border-color: #fff;
+  border-color: var(--accent);
   transform: translateY(-3px);
 }
 

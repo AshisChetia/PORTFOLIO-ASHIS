@@ -72,8 +72,8 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      
-      const response = await fetch("https://formspree.io/f/xykkkyab", {
+      const formId = import.meta.env.VITE_FORMSPREE_ID;
+      const response = await fetch(`https://formspree.io/f/${formId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -131,7 +131,7 @@ const Contact = () => {
               <FaEnvelope className="info-icon" />
               <div>
                 <h4>Email</h4>
-                <p>your.email@example.com</p>
+                <p>{import.meta.env.VITE_MY_EMAIL}</p>
               </div>
             </div>
             <div className="info-item">
@@ -206,13 +206,6 @@ const Contact = () => {
                 <>Send Message <FaPaperPlane /></>
               )}
             </button>
-
-            {status === 'success' && (
-              <div className="status-msg success">Message sent! I'll get back to you soon.</div>
-            )}
-            {status === 'error' && (
-              <div className="status-msg error">Oops! Something went wrong. Please try again.</div>
-            )}
           </form>
         </div>
       </div>

@@ -121,27 +121,19 @@
   align-items: center;
   gap: 10px;
   transition: all 0.3s ease;
+  font-weight: bold;
 }
 
 .submit-btn:hover {
-  background: #fff;
+  background: var(--accent);
   color: #000;
-  border-color: #fff;
+  border-color: var(--accent);
 }
 
 .submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
-/* Status Messages */
-.status-msg {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-}
-
-.status-msg.success { color: #22c55e; }
-.status-msg.error { color: #ff4d4d; }
 
 /* ... Keep existing styles ... */
 

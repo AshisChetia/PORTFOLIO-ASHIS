@@ -65,12 +65,14 @@
   padding: 2.5rem 1.5rem;
   transition: all 0.4s ease;
   min-height: 400px; /* Ensure vertical height */
+  
 }
 
 .tech-card:hover {
   background: #111;
-  border-color: #fff; /* White border on hover */
+  border-color: var(--card-theme); /* White border on hover */
   transform: translateY(-10px);
+  box-shadow: 0 10px 40px -10px var(--card-theme)
 }
 
 .card-top {
@@ -87,7 +89,7 @@
 }
 
 .tech-card:hover .card-icon {
-  color: #fff;
+  color: var(--card-theme);
 }
 
 .card-num {
@@ -142,10 +144,10 @@
 }
 
 .tech-list li:hover {
-  color: #fff;
+  color: var(--card-theme);
 }
 .tech-list li:hover .bullet {
-  color: #fff;
+  color: var(--card-theme);
 }
 
 /* --- Responsive Breakpoints --- */

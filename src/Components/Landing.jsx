@@ -96,9 +96,9 @@ const Landing = () => {
           </p>
 
           <div className="social-row fade-in">
-            <a href="#" className="social-btn"><FaGithub /></a>
-            <a href="#" className="social-btn"><FaLinkedin /></a>
-            <a href="#" className="social-btn"><FaInstagram /></a>
+            <a href="https://github.com/AshisChetia" className="social-btn" target='_blank'><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/ashis-chetia-a981b1351/" className="social-btn" target='_blank'><FaLinkedin /></a>
+            <a href="https://www.instagram.com/_ashischetia_?igsh=MW1nZWFvczM1cXZvbw==" className="social-btn" target='_blank'><FaInstagram /></a>
           </div>
         </div>
 
@@ -107,14 +107,14 @@ const Landing = () => {
           
           {/* NAME MOVED HERE */}
           <div className="intro-tag name-reveal">
-             <span className="dash"></span> Hello, I'm Ashish Chetia
+             <span className="dash"></span> Hello, I'm Ashis Chetia
           </div>
 
           <div className="image-container">
             <div className="reveal-overlay" ref={overlayRef}></div>
             <img 
               ref={imageRef}
-              src="../src/assets/heroImg.jpg" 
+              src="/public/heroImg.jpg" 
               alt="Ashish Chetia" 
               className="hero-image"
             />

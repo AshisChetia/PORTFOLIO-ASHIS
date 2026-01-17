@@ -65,28 +65,32 @@ const Skills = () => {
       title: "BACKEND",
       sub: "ARCHITECTURE",
       icon: <FaServer />,
-      items: ["Node.js", "Express", "REST API", "JWT Auth", "NestJS"]
+      items: ["Node.js", "Express", "REST API", "JWT Auth"],
+      color: "#ffc107"
     },
     {
       id: "02",
       title: "FRONTEND",
       sub: "EXPERIENCE",
       icon: <FaCode />,
-      items: ["HTML", "CSS", "Javascript", "React", "GSAP", "Next.js"]
+      items: ["HTML", "CSS", "Javascript", "React", "GSAP", "Next.js"],
+      color: "#3b82f6"
     },
     {
       id: "03",
       title: "DATABASE",
       sub: "STORAGE",
       icon: <FaDatabase />,
-      items: ["MongoDB", "MySQL", "Mongoose", "PostgreSQL", "Redis"]
+      items: ["MongoDB", "MySQL", "Mongoose",],
+      color: "#22c55e"
     },
     {
       id: "04",
       title: "TOOLS",
       sub: "WORKFLOW",
       icon: <FaTools />,
-      items: ["Git/GitHub", "Postman", "VS Code", "Docker", "AWS"]
+      items: ["Git/GitHub", "Postman", "VS Code", "vercel"],
+      color: "#f97316"
     }
   ];
 
@@ -109,7 +113,7 @@ const Skills = () => {
           {/* The 4 Columns */}
           <div className="tech-grid">
             {categories.map((cat, index) => (
-              <div className="tech-card" key={cat.id} ref={addToRefs}>
+              <div className="tech-card" key={cat.id} ref={addToRefs} style={{ "--card-theme": cat.color }}>
                 <div className="card-top">
                   <span className="card-icon">{cat.icon}</span>
                   <span className="card-num">{cat.id}</span>

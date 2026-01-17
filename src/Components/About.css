@@ -1,155 +1,207 @@
 .about-section {
-  padding: 10rem 0;
-  background-color: #050505; /* Matches Projects background */
+  padding: 10rem 5vw;
+  background-color: #050505;
   color: #fff;
-  position: relative;
-  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .about-container {
-  width: 90%;
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1.2fr; /* Image takes less space than text */
+  grid-template-columns: 1fr 1.5fr; /* Content is wider */
   gap: 6rem;
   align-items: center;
 }
 
-/* --- Left: Parallax Image --- */
+/* --- Left: Image Visual --- */
 .about-visual {
   position: relative;
-  height: 70vh;
-  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.image-mask {
+.img-wrapper-arch {
   width: 100%;
-  height: 100%;
-  overflow: hidden; /* Important for parallax mask */
-  border-radius: 8px;
+  max-width: 380px;
+  aspect-ratio: 3/4;
+  border-radius: 200px 200px 10px 10px; /* Refined Arch */
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
   position: relative;
+  /* Glow Effect */
+  box-shadow: 0 0 50px -10px rgba(0,0,0,0.8);
 }
 
 .about-img {
   width: 100%;
-  height: 120%; /* Taller than container for parallax movement */
+  height: 100%;
   object-fit: cover;
+  
+  /* 👇 ADD THIS LINE */
+  object-position: 25% center; /* Focuses 25% from the left edge */
+  
   filter: grayscale(100%);
-  transition: filter 0.5s ease;
+  transition: filter 0.5s ease, transform 0.7s ease;
 }
 
-.image-mask:hover .about-img {
+.img-wrapper-arch:hover .about-img {
   filter: grayscale(0%);
+  transform: scale(1.05);
 }
 
-/* --- Right: Typography --- */
-.overflow-hidden {
-  overflow: hidden; /* Masks the text before it slides up */
+.about-tag {
+  margin-top: -20px;
+  z-index: 2;
+  background: #111;
+  border: 1px solid #333;
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: var(--accent);
 }
 
-.d-block {
-  display: block;
+/* --- Right: Content --- */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.sub-heading {
+  font-size: 0.9rem;
+  color: #666;
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
 }
 
 .section-title {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 5vw, 5rem);
-  line-height: 0.9;
-  margin-bottom: 3rem;
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 800;
+  margin-bottom: 1rem;
 }
 
-.outline-text {
-  -webkit-text-stroke: 1px #fff;
-  color: transparent;
-}
-
-.about-body {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #aaa;
-  margin-bottom: 4rem;
+.about-desc {
+  font-size: 1.15rem;
+  color: #999;
+  line-height: 1.7;
   max-width: 600px;
 }
 
-.about-body p {
-  margin-bottom: 1.5rem;
-}
-
-.about-body strong {
+.about-desc strong {
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
 }
 
-/* --- Stats Row --- */
-.about-stats {
-  display: flex;
-  gap: 3rem;
-  border-top: 1px solid #222;
-  padding-top: 2rem;
-}
-
-.stat-item {
+/* Action Buttons */
+.about-actions {
   display: flex;
   align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.resume-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 30px;
+  background: #fff; /* Solid white for contrast */
+  color: #000;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: var(--accent); /* Gold on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Minimal Social Circles */
+.about-socials {
+  display: flex;
   gap: 1rem;
 }
 
-.stat-icon {
-  font-size: 2rem;
-  color: var(--accent); /* Gold color */
-}
-
-.stat-val {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.8rem;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.about-socials {
+.social-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 3rem; /* Space before stats */
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
 }
 
-.about-social-link {
-  color: #888;
-  font-size: 1.8rem;
-  transition: all 0.3s;
+.social-circle:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  transform: translateY(-2px);
 }
 
-.about-social-link:hover {
-  color: var(--accent);
-  transform: translateY(-3px);
+/* Interest Pills */
+.interests-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.interest-pill {
+  font-size: 0.9rem;
+  color: #777;
+  border: 1px solid #222;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.02);
 }
 
 /* --- Responsive --- */
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
   .about-container {
-    grid-template-columns: 1fr; /* Stack vertically */
+    grid-template-columns: 1fr;
+    text-align: center;
     gap: 4rem;
   }
-
+  
   .about-visual {
-    height: 50vh;
-    order: 2; /* Move image below text on mobile if preferred, or keep 1 */
+    order: 1; /* Image first on mobile */
   }
   
   .about-content {
-    order: 1;
+    order: 2;
+    align-items: center;
+  }
+  
+  .about-actions {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
-  .about-stats {
-    flex-wrap: wrap; /* Allow stats to wrap on small phones */
-    gap: 2rem;
+  .section-title {
+    font-size: 2.5rem;
+  }
+  
+  .img-wrapper-arch {
+    max-width: 300px;
   }
 }
