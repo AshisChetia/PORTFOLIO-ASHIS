@@ -1,7 +1,7 @@
 import React from 'react';
 import Landing from './Components/Landing';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
+import Skills from './Components/Skills';
+import Projects from './Components/Projects';
 import About from './Components/About';
 import Contact from './Components/Contact'; // Import
 import Dock from './Components/Dock';
