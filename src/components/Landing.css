@@ -230,9 +230,27 @@
 /* --- Responsive Design --- */
 @media (max-width: 1024px) {
   .landing-content {
-    grid-template-columns: 1fr; /* Single Column */
-    gap: 2rem;
-    margin-top: 6rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem; /* Slightly reduced gap */
+    
+    /* 👇 CHANGE THIS */
+    margin-top: 0; /* Was 6rem. Setting to 0 lets flexbox center it vertically. */
+    
+    /* Optional: Ensure it doesn't touch the very top widget */
+    padding-top: 4rem; 
+  }
+
+  .status-widget {
+    padding: 6px 12px; /* Smaller padding */
+  }
+
+  .status-info {
+    font-size: 0.65rem; /* 👇 Much smaller text (was 0.75rem) */
+  }
+
+  .status-dot {
+    width: 6px;  /* Smaller dot */
+    height: 6px;
   }
 
   .visual-section {

@@ -3,6 +3,8 @@
   padding-bottom: 20vh; /* Extra space at bottom for scrolling */
   position: relative;
   z-index: 1;
+  will-change: transform; 
+  transform: translateZ(0);
 }
 
 .projects-header {
@@ -226,6 +228,9 @@
   }
   
   .project-card {
+    position: relative; 
+    top: 0 !important; 
+    margin-bottom: 3rem;
     height: auto;
     min-height: auto;
   }
@@ -236,8 +241,9 @@
   }
   
   .project-text {
-    padding: 2rem;
+    padding: 2rem 2rem 8rem 2rem;
     border-right: none;
     border-top: 1px solid #222;
   }
+ 
 }
