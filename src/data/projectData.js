@@ -12,6 +12,17 @@ export const projectData = [
   },
   {
     id: 2,
+    title: "BookMart",
+    category: "CURATED BOOK MARKETPLACE",
+    desc: "A comprehensive peer-to-peer marketplace connecting avid readers with independent booksellers. Features a robust dual-role ecosystem that allows users to seamlessly buy and sell books. Includes a professional seller dashboard with real-time financial analytics, order tracking, and inventory management, alongside an immersive buyer experience with smart search, genre-based discovery, and secure checkout. Built with a focus on premium aesthetics and responsive design.",
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+    img: "https://res.cloudinary.com/douss7mdx/image/upload/Screenshot_2026-02-12_222753_ln6srd.png",
+    video: "https://res.cloudinary.com/douss7mdx/video/upload/BookMart_wub971.mp4",
+    link: "https://bookmart-frontend-chi.vercel.app/",
+    repo: "https://github.com/AshisChetia/BookMart"
+  },
+  {
+    id: 3,
     title: "SweetBite",
     category: "E-Commerce Architecture",
     desc: " The project “SweetBite” is a web-based bakery management system designed to digitalize the operations of a bakery. The purpose of this project is to provide an online platform where users can view bakery products, place orders, and track their order history. At the same time, it provides an administrative interface to manage products, orders, and inventory efficiently.",
@@ -20,16 +31,5 @@ export const projectData = [
     video: "https://res.cloudinary.com/douss7mdx/video/upload/v1768229200/p.sweetbite_ozymty.mp4",
     link: "https://sweet-bite-frontend.vercel.app/",
     repo: "https://github.com/AshisChetia/SweetBite-bakery-management"
-  },
-  {
-    id: 3,
-    title: "Animal Detect AI",
-    category: "Hackathon Winner",
-    desc: "An AI-powered detection system built in 24 hours. Integrated Python ML models with a Node.js backend.",
-    stack: ["Python", "TensorFlow", "React", "Node.js"],
-    img: "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?q=80&w=1000&auto=format&fit=crop",
-    video: "https://res.cloudinary.com/demo/video/upload/v1690469084/samples/elephants.mp4",
-    link: "#",
-    repo: "#"
   }
 ];
