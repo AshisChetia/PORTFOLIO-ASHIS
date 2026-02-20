@@ -83,7 +83,7 @@ const About = () => {
             {/* Resume & Socials */}
             <div className="about-actions about-reveal">
                <a 
-                 href="/resume.pdf" 
+                 href="/my-resume.pdf" 
                  target="_blank" 
                  rel="noopener noreferrer" 
                  className="resume-btn"
