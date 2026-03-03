@@ -31,5 +31,15 @@ export const projectData = [
     video: "https://res.cloudinary.com/douss7mdx/video/upload/v1768229200/p.sweetbite_ozymty.mp4",
     link: "https://sweet-bite-frontend.vercel.app/",
     repo: "https://github.com/AshisChetia/SweetBite-bakery-management"
+  },
+  {
+    id: 4,
+    title: "Graphics Visualizer",
+    category: "INTERACTIVE ALGORITHM VISUALIZER",
+    desc: "An interactive computer graphics algorithm visualization platform designed for students and educators. Features a 60×60 pixel grid canvas with step-by-step playback controls for 9 core CG algorithms — including DDA, Bresenham's, Midpoint Circle, Scanline Fill, and Cohen-Sutherland clipping. Includes a built-in Monaco code editor for writing custom pixel-rendering code, a role-based lesson sharing system where educators create and share algorithm presets via unique links, and JWT-secured authentication. Built with a focus on real-time interactivity and educational clarity.",
+    stack: ["Node.js", "Express.js", "React.js", "Tailwind CSS", "Mysql", "Monaco Editor"],
+    img: "/GraphicsViz.png",
+    video: "https://res.cloudinary.com/douss7mdx/video/upload/GraphViz_iyt8l6.mp4",
+    repo: "https://github.com/AshisChetia/Graphics_visualizer"
   }
 ];
