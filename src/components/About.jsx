@@ -71,12 +71,10 @@ const About = () => {
             
             <div className="about-text-grid">
               <p className="about-desc about-reveal">
-                I am a backend-focused developer based in <strong>Assam, India</strong>, currently pursuing my BCA at 
-                <strong> Sibsagar Commerce College (Dibrugarh University)</strong>.
+                Based in <strong>Assam, India,</strong> I'm currently studying at <strong>Sibsagar Commerce College</strong> with a love for life away from the keyboard. I run on good chai and have a deep fascination for <strong>cars, bikes,</strong> and hands-on <strong>electronics</strong>. 
               </p>
               <p className="about-desc about-reveal">
-                My passion lies in backend architecture, but I am rapidly evolving into a Full Stack Developer. 
-                When I'm not coding, I love watching movies, series, and playing games.
+                When I'm not out playing a game of <strong>cricket,</strong> you'll likely find me relaxing with a <strong>gaming</strong> session, discovering new <strong>music,</strong> or catching up on <strong>movies and series</strong>.
               </p>
             </div>
 
