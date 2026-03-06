@@ -7,7 +7,6 @@ import './Projects.css';
 const ProjectCard = ({ project, index }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
   const handleMouseEnter = () => {
     setIsPlaying(true);
     if (videoRef.current) {
@@ -24,18 +23,18 @@ const ProjectCard = ({ project, index }) => {
   };
 
   return (
-    <div 
-      className="project-card" 
-      style={{ top: `calc(15vh + ${index * 30}px)` }} 
+    <div
+      className="project-card"
+      style={{ top: `calc(15vh + ${index * 30}px)` }}
     >
       <div className="project-content">
-        
+
         {/* Left: Text */}
         <div className="project-text">
           <span className="project-cat">{project.category}</span>
           <h3 className="project-title">{project.title}</h3>
           <p className="project-desc">{project.desc}</p>
-          
+
           <div className="project-stack">
             {project.stack.map((tech, i) => (
               <span key={i} className="tech-tag">{tech}</span>
@@ -46,20 +45,26 @@ const ProjectCard = ({ project, index }) => {
             <a href={project.repo} target="_blank" rel="noreferrer" className="link-btn">
               <FaGithub /> Code
             </a>
-            <a href={project.link} target="_blank" rel="noreferrer" className="link-btn">
-              <FaExternalLinkAlt /> Live Demo
-            </a>
+            {project.link ? (
+              <a href={project.link} target="_blank" rel="noreferrer" className="link-btn">
+                <FaExternalLinkAlt /> Live Demo
+              </a>
+            ) : (
+              <span className="link-btn" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
+                <FaExternalLinkAlt /> Not Deployed
+              </span>
+            )}
           </div>
         </div>
 
         {/* Right: Visual (Image -> Video Swap) */}
-        <div 
+        <div
           className="project-visual"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <div className="image-container">
-            
+
             {/* 1. Video Element (Hidden by default) */}
             <video
               ref={videoRef}
@@ -71,15 +76,15 @@ const ProjectCard = ({ project, index }) => {
             />
 
             {/* 2. Static Image (Visible by default) */}
-            <img 
-              src={project.img} 
-              alt={project.title} 
-              className={`project-img ${isPlaying ? 'hidden' : ''}`} 
+            <img
+              src={project.img}
+              alt={project.title}
+              className={`project-img ${isPlaying ? 'hidden' : ''}`}
             />
 
             {/* 3. Play Icon Overlay (Optional hint) */}
             <div className={`play-overlay ${isPlaying ? 'hidden' : ''}`}>
-               <FaPlay className="play-icon" />
+              <FaPlay className="play-icon" />
             </div>
 
           </div>
