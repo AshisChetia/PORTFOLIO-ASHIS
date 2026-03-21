@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { certificateData } from '../data/certificateData';
 import './Certificates.css';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaTimes, FaExternalLinkAlt } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,7 +11,9 @@ const Certificates = () => {
   const sectionRef = useRef(null);
   const listRef = useRef(null);
   const cursorImgRef = useRef(null);
+  
   const [activeImg, setActiveImg] = useState(certificateData[0]?.img || "");
+  const [selectedCert, setSelectedCert] = useState(null); // Modal State
 
   useEffect(() => {
     // Reveal Animations
@@ -47,11 +49,12 @@ const Certificates = () => {
 
   // Floating Image Mouse Move Effect (The Awwwards touch)
   useEffect(() => {
-    // QuickTo for buttery smooth cursor trailing
+    // Disable entirely for mobile/touch screens to prevent bugs
+    if(window.matchMedia("(max-width: 1024px)").matches) return;
+
     let xTo = gsap.quickTo(cursorImgRef.current, "x", { duration: 0.5, ease: "power3" });
     let yTo = gsap.quickTo(cursorImgRef.current, "y", { duration: 0.5, ease: "power3" });
 
-    // Center the image relative to the mouse pointer
     gsap.set(cursorImgRef.current, { xPercent: -50, yPercent: -50, scale: 0 });
 
     const moveImage = (e) => {
@@ -63,13 +66,33 @@ const Certificates = () => {
     return () => window.removeEventListener("mousemove", moveImage);
   }, []);
 
-  const handleMouseEnter = (img) => {
-    setActiveImg(img);
-    gsap.to(cursorImgRef.current, { scale: 1, opacity: 1, duration: 0.5, ease: "power4.out" }); // Pop in
+  // Ensure background scrolling stops when modal is open
+  useEffect(() => {
+    if (selectedCert) {
+      document.body.style.overflow = "hidden";
+      // Hide cursor if modal is open
+      gsap.to(cursorImgRef.current, { scale: 0, opacity: 0, duration: 0.2, overwrite: "auto" });
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => { document.body.style.overflow = "auto"; };
+  }, [selectedCert]);
+
+  // Aggressive Cursor Hide on List Leave to fix the "Stuck" bug
+  const forceHideCursor = () => {
+    gsap.to(cursorImgRef.current, { scale: 0, opacity: 0, duration: 0.3, ease: "power3.in", overwrite: "auto" });
   };
 
-  const handleMouseLeave = () => {
-    gsap.to(cursorImgRef.current, { scale: 0, opacity: 0, duration: 0.4, ease: "power3.in" }); // Pop out
+  const handleRowEnter = (img) => {
+    if (selectedCert) return; // Don't show cursor proxy if looking at modal
+    setActiveImg(img);
+    gsap.to(cursorImgRef.current, { scale: 1, opacity: 1, duration: 0.4, ease: "power4.out", overwrite: "auto" }); // Pop in
+  };
+
+  const openModal = (cert, e) => {
+    e.preventDefault();
+    setSelectedCert(cert);
+    forceHideCursor(); // Kill custom cursor instantly
   };
 
   return (
@@ -86,26 +109,26 @@ const Certificates = () => {
         {/* Top Header */}
         <div className="cert-head">
           <h2 className="cert-huge-title">
-            <div className="title-overflow"><span>HONORS &</span></div>
-            <div className="title-overflow"><span className="outline">AWARDS.</span></div>
+            <div className="title-overflow"><span className="outline">CERTIFICATES.</span></div>
           </h2>
           <p className="cert-intro">
             A curated collection of my professional credentials and achievements. 
-            Hover over the list to preview the proofs of my expertise.
+            Click any certificate to view its details and verified proofs.
           </p>
         </div>
 
         {/* Huge Interactive Text List */}
-        <div className="cert-list" ref={listRef}>
+        <div 
+          className="cert-list" 
+          ref={listRef} 
+          onMouseLeave={forceHideCursor} // Failsafe killswitch off list boundaries
+        >
           {certificateData.map((cert, index) => (
-            <a 
-              href={cert.link} 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <div 
               key={cert.id} 
               className="cert-row"
-              onMouseEnter={() => handleMouseEnter(cert.img)}
-              onMouseLeave={handleMouseLeave}
+              onClick={(e) => openModal(cert, e)}
+              onMouseEnter={() => handleRowEnter(cert.img)}
             >
               {/* Left Side: Number + Title */}
               <div className="cert-row-left">
@@ -125,11 +148,47 @@ const Certificates = () => {
                 </div>
                 <div className="cert-arrow"><FaArrowRight /></div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
 
       </div>
+
+      {/* --- MODAL / LIGHTBOX OVERLAY --- */}
+      {selectedCert && (
+        <div className="cert-modal-overlay" onClick={() => setSelectedCert(null)}>
+          <div className="cert-modal-content" onClick={(e) => e.stopPropagation()}>
+            
+            <button className="cert-modal-close" onClick={() => setSelectedCert(null)}>
+              <FaTimes />
+            </button>
+            
+            <div className="cert-modal-visual">
+              <img src={selectedCert.img} alt={selectedCert.title} />
+            </div>
+
+            <div className="cert-modal-info">
+              <span className="cert-modal-issuer">{selectedCert.issuer}</span>
+              <h2>{selectedCert.title}</h2>
+              <p>{selectedCert.desc}</p>
+              
+              <div className="cert-modal-tags">
+                  {selectedCert.tags && selectedCert.tags.map((tag, idx) => (
+                    <span key={idx} className="cert-tag">{tag}</span>
+                  ))}
+              </div>
+
+              {selectedCert.link && selectedCert.link !== "#" && (
+                <a href={selectedCert.link} target="_blank" rel="noopener noreferrer" className="verify-btn">
+                  Verify Link <FaExternalLinkAlt />
+                </a>
+              )}
+            </div>
+
+          </div>
+        </div>
+      )}
+
     </section>
   );
 };

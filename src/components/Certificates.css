@@ -25,11 +25,11 @@
   pointer-events: none; /* Let mouse click through it to the links below */
   z-index: 9999;
   opacity: 0;
-  /* Origin centered for perfect mouse alignment */
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  /* The image center is positioned at the mouse cursor by GSAP xPercent */
 }
 
 .cert-cursor-img img {
@@ -79,7 +79,7 @@
 
 .cert-huge-title {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(2rem, 12vw, 8rem);
   font-weight: 800;
   line-height: 0.95;
   margin-bottom: 2rem;
@@ -120,32 +120,56 @@
   position: relative;
   cursor: pointer;
   z-index: 10;
-  /* Ensure background hover transition looks smooth */
   transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
               color 0.4s;
 }
 
-/* Hover Background fill effect */
-.cert-row::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 50%; width: 100vw; bottom: 0;
-  transform: translateX(-50%) scaleY(0);
-  background-color: var(--text-main);
-  z-index: -1;
-  transform-origin: bottom center;
-  transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
-}
+/* Desktop Only Hover Effects wrapper */
+@media (min-width: 1025px) {
+  /* Hover Background fill effect */
+  .cert-row::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%; width: 100vw; bottom: 0;
+    transform: translateX(-50%) scaleY(0);
+    background-color: var(--text-main);
+    z-index: -1;
+    transform-origin: bottom center;
+    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+  }
 
-.cert-row:hover::after {
-  transform: translateX(-50%) scaleY(1);
-  transform-origin: top center;
-}
+  .cert-row:hover::after {
+    transform: translateX(-50%) scaleY(1);
+    transform-origin: top center;
+  }
 
-/* Hover Colors Updates */
-.cert-row:hover {
-  padding: 4rem 3rem; /* Expanding padding effect */
-  color: var(--bg-color); /* Swap to dark text on light background */
+  .cert-row:hover {
+    padding: 4rem 3rem; /* Expanding padding effect */
+    color: var(--bg-color); /* Swap to dark text on light background */
+  }
+
+  .cert-row:hover .cert-num {
+    opacity: 1;
+    color: var(--bg-color);
+  }
+
+  .cert-row:hover .cert-item-title {
+    transform: translateX(1.5rem); /* Slide to right */
+    font-style: italic; /* Awwwards italic switch trope */
+    font-weight: 600;
+  }
+
+  .cert-row:hover .cert-details {
+    opacity: 1;
+    color: var(--bg-color);
+  }
+
+  .cert-row:hover .cert-arrow {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    border-color: var(--bg-color);
+    transform: rotate(-45deg); /* Arrow points diagonally */
+  }
 }
 
 /* Left Content Wrapper */
@@ -164,11 +188,6 @@
   transition: opacity 0.4s;
 }
 
-.cert-row:hover .cert-num {
-  opacity: 1;
-  color: var(--bg-color);
-}
-
 /* Main Certificate Title inside list */
 .cert-item-title {
   font-family: var(--font-display);
@@ -177,15 +196,8 @@
   text-transform: uppercase;
   margin: 0;
   line-height: 1;
-  /* Hover transforms */
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
               font-style 0.3s;
-}
-
-.cert-row:hover .cert-item-title {
-  transform: translateX(1.5rem); /* Slide to right */
-  font-style: italic; /* Awwwards italic switch trope */
-  font-weight: 600;
 }
 
 /* Right Content Wrapper */
@@ -201,11 +213,6 @@
   gap: 1.5rem;
   opacity: 0.7;
   transition: opacity 0.4s;
-}
-
-.cert-row:hover .cert-details {
-  opacity: 1;
-  color: var(--bg-color);
 }
 
 .cert-issuer {
@@ -238,16 +245,166 @@
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cert-row:hover .cert-arrow {
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  border-color: var(--bg-color);
-  transform: rotate(-45deg); /* Arrow points diagonally */
+/* ==================================
+   CERTIFICATE MODAL (LIGHTBOX)
+   ================================== */
+.cert-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(11, 11, 11, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 0.4s ease forwards;
 }
 
-/* Mobile Responsiveness */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cert-modal-content {
+  background: rgba(25, 25, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 1200px; /* Slightly wider for split view */
+  max-height: 85vh; /* Prevent modal from exceeding screen height */
+  display: flex;
+  flex-direction: row; /* Split visual and text side-by-side */
+  overflow: hidden; /* Hide overflow to keep rounded corners clean */
+  position: relative;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cert-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: none;
+  color: var(--text-main);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s;
+}
+
+.cert-modal-close:hover {
+  background: var(--text-main);
+  color: var(--bg-color);
+  transform: rotate(90deg);
+}
+
+.cert-modal-visual {
+  flex: 1.3; /* Image takes up ~55% of the total width */
+  background: rgba(10, 10, 10, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.cert-modal-visual img {
+  width: 100%;
+  height: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+}
+
+.cert-modal-info {
+  flex: 1; /* Text takes up ~45% of width */
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the text */
+  overflow-y: auto; /* Let text scroll if extremely long */
+  background: rgba(20, 20, 20, 0.4);
+}
+
+.cert-modal-issuer {
+  color: var(--accent);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.cert-modal-info h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-family: var(--font-display);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.cert-modal-info p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.cert-modal-tags {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.cert-tag {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.verify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background: var(--text-main);
+  color: var(--bg-color);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 3rem;
+  width: fit-content;
+  transition: all 0.3s;
+}
+
+.verify-btn:hover {
+  background: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* ==================================
+   MOBILE RESPONSIVENESS
+   ================================== */
 @media (max-width: 1024px) {
-  /* Disable absolute floating cursor image entirely for touch devices */
   .cert-cursor-img {
     display: none !important;
   }
@@ -255,22 +412,12 @@
   .cert-mobile-img {
     display: block;
     width: 100%;
-    margin: 0;
+    margin: 1.5rem 0;
     border-radius: 1rem;
     object-fit: cover;
     aspect-ratio: 16/9;
     border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .cert-row::after {
-    /* Safe container expansion on mobile */
-    left: 50%;
-    width: 100vw; 
-    transform: translateX(-50%) scaleY(0);
-  }
-
-  .cert-row:hover::after {
-    transform: translateX(-50%) scaleY(1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
   }
 
   .cert-row-right {
@@ -293,11 +440,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 3rem 0;
-    gap: 2rem;
-  }
-  
-  .cert-row:hover {
-    padding: 3rem 1.5rem;
+    gap: 1rem; /* Reduced gap since image handles margin */
   }
   
   .cert-row-left {
@@ -319,7 +462,27 @@
     align-items: flex-start;
   }
 
-  .cert-row:hover .cert-item-title {
-    transform: translateX(10px);
+/* Adjust Modal for tablets and smaller screens (stacked layout) */
+  .cert-modal-content {
+    flex-direction: column;
+    overflow-y: auto; /* Restore scroll for stacked layout */
+  }
+
+  .cert-modal-visual {
+    flex: none;
+    width: 100%;
+    min-height: 35vh; /* Show top slice of modal as image */
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .cert-modal-visual img {
+    max-height: 45vh;
+  }
+
+  .cert-modal-info {
+    flex: none;
+    padding: 2rem;
+    justify-content: flex-start;
   }
 }
