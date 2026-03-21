@@ -1,6 +1,6 @@
 import React from 'react';
 import './Dock.css';
-import { FaHome, FaCode, FaProjectDiagram, FaUser, FaEnvelope } from 'react-icons/fa'; // Example icons
+import { FaHome, FaCode, FaProjectDiagram, FaUser, FaEnvelope, FaAward } from 'react-icons/fa'; // Example icons
 import gsap from 'gsap';
 
 const Dock = () => {
@@ -26,6 +26,7 @@ const Dock = () => {
     { id: 'home', icon: <FaHome />, label: 'Home' },
     { id: 'skills', icon: <FaCode />, label: 'Skills' },
     { id: 'projects', icon: <FaProjectDiagram />, label: 'Work' },
+    { id: 'certificates', icon: <FaAward />, label: 'Certs' },
     { id: 'about', icon: <FaUser />, label: 'About' },
     { id: 'contact', icon: <FaEnvelope />, label: 'Contact' },
   ];
