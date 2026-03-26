@@ -39,7 +39,15 @@ Designed to showcase backend architecture expertise with fluid animations and a 
 * Custom **Toast Notifications** (Success/Error) replacing standard alerts.
 * Secured using Environment Variables.
 
+### 5. 📜 Certificates Gallery (Recently Added)
+* Interactive showcase of certifications and achievements.
+* Features numbered gallery (01, 02, 03), modal details with issuer/description.
+* GSAP animations for reveal and hover effects.
+* Data-driven from `certificateData.js`.
+
 ---
+
+
 
 ## 🚀 Setup & Installation
 
@@ -87,9 +95,12 @@ src/
  │   ├── Projects.jsx  # Sticky Card Gallery & Video Logic
  │   ├── Projects.css  # Styling for Projects Section
  │   ├── Skills.jsx    # Tech Stack & Hover Effects
- │   └── Skills.css    # Styling for Skills Section
+ │   ├── Skills.css    # Styling for Skills Section
+ │   ├── Certificates.jsx  # Recently added: Interactive cert gallery & modals
+ │   └── Certificates.css  # Styling for Certificates Section
  ├── data/
- │   └── projectData.js # Static Data for Projects (Videos, Links, Text)
+ │   ├── projectData.js # Static Data for Projects (Videos, Links, Text)
+ │   └── certificateData.js # Cert details (issuer, date, desc - recently added)
  ├── App.jsx           # Main Layout & Component Composition
  ├── App.css           # Global Styles & Variables
  ├── index.css         # Base Tailwind/Global Resets
@@ -97,7 +108,12 @@ src/
  └── vite-env.d.ts     # (Vite Types)
 public/
  ├── aboutImg.jpg      # Profile Photo for About Section
+ ├── cert-algo.jpeg    # Certificates: Algo Arena Hackathon
+ ├── cert-iit.png      # Certificates: DebugOn IIT Delhi
+ ├── cert-python.png   # Certificates: Basics of Python
  ├── coding.png        # (Asset)
+ ├── GraphicsViz.png   # Projects: Graphics Visualizer thumbnail
  ├── heroImg.jpg       # Main Hero Image
- ├── resume.pdf        # Downloadable Resume File
- └── sweetbite.png     # Project Thumbnail
+ ├── hyperlsp.png      # Projects: HyperLSP thumbnail
+ ├── my-resume.pdf     # Downloadable Resume File
+ └── sweetbite.png     # Projects: SweetBite thumbnail

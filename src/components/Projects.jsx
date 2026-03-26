@@ -34,6 +34,7 @@ const ProjectCard = ({ project, index }) => {
           <span className="project-cat">{project.category}</span>
           <h3 className="project-title">{project.title}</h3>
           <p className="project-desc">{project.desc}</p>
+          
 
           <div className="project-stack">
             {project.stack.map((tech, i) => (
