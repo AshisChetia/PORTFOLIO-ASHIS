@@ -80,19 +80,18 @@ const Landing = () => {
 
       <div className="landing-content">
         
-        {/* Left: Main Title (Backend Architect) */}
+        {/* Left: Main Title (Fullstack Developer) */}
         <div className="text-section">
           
           <h1 className="display-title">
-            <div className="hero-line"><span>BACKEND</span></div>
-            <div className="hero-line"><span className="italic-serif">ARCHITECT</span></div>
-            <div className="hero-line"><span>& FUTURE</span></div>
-            <div className="hero-line"><span className="outline">FULLSTACK.</span></div>
+            <div className="hero-line"><span>FULLSTACK</span></div>
+            <div className="hero-line"><span className="italic-serif">WEB</span></div>
+            <div className="hero-line"><span className="outline">DEVELOPER.</span></div>
           </h1>
 
           <p className="hero-bio fade-in">
-            Engineering robust logic for the web. <br />
-            Translating complex data into seamless experiences.
+            Crafting modern web experiences from front to back — <br />
+            pixel-perfect interfaces powered by robust APIs.
           </p>
 
           <div className="social-row fade-in">
