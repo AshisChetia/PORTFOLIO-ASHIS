@@ -20,5 +20,16 @@ export const uiProjects = [
     video: "https://res.cloudinary.com/douss7mdx/video/upload/v1785508566/Screen_Recording_2026-07-31_200101_ehbnun.mp4",
     link: "cafe-niribiliz.vercel.app",
     repo: "https://github.com/AshisChetia/Cafe-Niribiliz"
+  },
+  {
+    id: 3,
+    title: "Luxe Estate",
+    category: "Real Estate & Experience Showcase",
+    desc: "A high-performance digital web application built for luxury penthouse and estate showcases across NYC, Dubai, Miami, and LA. Highlights high-resolution architectural galleries, interactive multi-property comparison matrix, mortgage payment estimator, and saved listing shortlist with dynamic automated SEO.",
+    stack:  ["React.js", "Vite", "Tailwind CSS 4", "GSAP", "Lenis Scroll"],
+    img: "/luxe-estate.jpg",
+    video: "https://res.cloudinary.com/douss7mdx/video/upload/v1785858180/compressed_ezcrwf.mp4",
+    link: "https://luxeestate-iota.vercel.app/#home",
+    repo: "https://github.com/AshisChetia/LUXE-ESTATE"
   }
 ];
